@@ -1,8 +1,10 @@
-# Simple static web server using Nginx
 FROM nginx:alpine
 
-# Copy all files to web root
-COPY . /usr/share/nginx/html
+# Remove default Nginx page
+RUN rm -rf /usr/share/nginx/html/*
 
-# Expose port 80
+# Copy ALL files from repo to Nginx root
+COPY . /usr/share/nginx/html/
+
+# Expose port
 EXPOSE 80
